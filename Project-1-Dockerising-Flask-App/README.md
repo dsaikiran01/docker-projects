@@ -14,7 +14,7 @@ This project demonstrates how a basic web application can be packaged, run, and 
 
 ## **Project Aim**
 
-* Learn how to containerize a web application using Docker.
+* Learn how to containerise a web application using Docker.
 * Understand Dockerfile, image building, and container execution.
 * Use environment variables and port mapping.
 * Push the image to Docker Hub.
@@ -41,7 +41,7 @@ This project demonstrates
 - Docker commands (build, run, stop, inspect)
 - Environment variables in containers
 - Port mapping (`-p 5000:5000`)
-- Optimizing images using lightweight base image
+- Optimising images using lightweight base image
 - Docker Compose
 - Pushing image to Docker Hub
 
@@ -64,7 +64,7 @@ flask-app/
 | -------------- | ------------------------------------- |
 | Python 3.11    | Programming language                  |
 | Flask          | Web framework                         |
-| Docker         | Containerization                      |
+| Docker         | Containerisation                      |
 | Docker Compose | Multi-container management |
 | GitHub         | Version control            |
 | Docker Hub     | Container image registry              |
@@ -193,10 +193,10 @@ docker push dockerhub-username/flask-app-image:v1
 
 ## **Conclusion**
 
-This project provided a practical foundation in **Docker-based application containerization**, which is a core skill for DevOps engineers.
+This project provided a practical foundation in **Docker-based application containerisation**, which is a core skill for DevOps engineers.
 By taking a simple Flask application and packaging it into a Docker image, I learned how to:
 
-- Build and optimize Dockerfiles
+- Build and optimise Dockerfiles
 - Run, stop, and manage containers
 - Use environment variables and port mapping
 - Automate development setup with Docker Compose

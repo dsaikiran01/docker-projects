@@ -1,79 +1,206 @@
-# Simple Multi-Container Application
+# Project-2: Multi-Container Application using Docker Compose
 
-This repository contains a multi-container application with the following components:
+![Docker](https://img.shields.io/badge/Container-Docker-blue?logo=docker)
+![Docker Compose](https://img.shields.io/badge/Orchestration-DockerCompose-blue?logo=docker)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green?logo=node.js)
+![Express](https://img.shields.io/badge/Framework-Express-black?logo=express)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?logo=mongodb)
+![Nginx](https://img.shields.io/badge/ReverseProxy-Nginx-darkgreen?logo=nginx)
+![Mongo Express](https://img.shields.io/badge/DB_Admin-MongoExpress-orange)
+![VS Code](https://img.shields.io/badge/Editor-VSCode-blue?logo=visual-studio-code)
+![GitHub](https://img.shields.io/badge/Source-GitHub-black?logo=github)
 
-1. **Frontend**: A static HTML/CSS/JavaScript frontend served by an Nginx container.
-2. **Backend**: A Node.js/Express backend that connects to MongoDB.
-3. **MongoDB**: A database container using the official MongoDB image.
-4. **Mongo Express**: A web-based MongoDB admin interface.
+*Containerising full stack application using Docker — Frontend + Backend + MongoDB + Mongo Express.*
 
-## Project Structure
 
-- `frontend/`: Contains the static files for the frontend.
-- `backend/`: Contains the Node.js/Express backend.
-- `docker-compose.yml`: Defines the multi-container setup.
+## **Project Aim**
 
-## Prerequisites
+The aim of this project is to build a **production-like multi-container application** using **Docker Compose**, demonstrating how different services can communicate within an isolated containerised environment. The project simulates a real-world microservices setup and focuses on:
 
-- Docker and Docker Compose installed on your system.
+* Dockerising multiple services (frontend, backend, database, admin UI)
+* Managing them via Docker Compose
+* Using environment variables for configuration
+* Establishing communication between containers
+* Practicing DevOps concepts like containerisation, orchestration, and networking
 
-## Setup Instructions
+
+## Table of Contents
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Project Code Structure](#project-code-structure)
+- [Technologies Used](#technologies-used)
+- [Environment Variables](#environment-variables-env)
+- [How to Run the Application](#how-to-run-the-application)
+- [API Endpoints](#api-endpoints-backend)
+- [Stopping and Cleaning](#stopping-and-cleaning)
+- [Simulation Output](#simulation-output)
+- [Conclusion](#conclusion)
+
+
+## **Overview**
+
+This project demonstrates how multiple services can work together in isolated containers using **Docker Compose**. It simulates a **real-world microservices environment**, with a frontend, backend API, database, and a database admin dashboard — all fully dockerised and configurable via environment variables.
+
+
+## **Architecture**
+
+```mermaid
+graph LR
+    subgraph Client
+        U[User Browser]
+    end
+
+    subgraph Docker_Network
+        FE[Frontend<br/>Nginx + Static Files]
+        BE[Backend API<br/>Node.js / Express]
+        DB[(MongoDB)]
+        ME[Mongo Express<br/>DB Admin UI]
+    end
+
+    %% External access
+    U -->|HTTP :8080| FE
+    U -->|HTTP :8081| ME
+
+    %% Internal service communication
+    FE -->|REST API :3000| BE
+    BE -->|MONGO_URI| DB
+    ME -->|Admin Connection| DB
+```
+
+
+## **Project Code Structure**
+
+```
+multi-container-app/
+│
+├── backend
+│   ├── Dockerfile
+│   ├── models
+│   │   └── User.js
+│   ├── package.json
+│   ├── package-lock.json
+│   └── server.js
+│
+├── frontend
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── script.js
+│   └── styles.css
+│
+├── .env              # Environment variables
+├── docker-compose.yml
+└── README.md
+```
+
+
+## **Technologies Used**
+
+| Technology     | Purpose                               |
+| -------------- | ------------------------------------- |
+| JavaScript     | Programming language                  |
+| ExpressJS      | Web framework                         |
+| Docker         | Containerisation                      |
+| Docker Compose | Multi-container management |
+| GitHub         | Version control            |
+
+
+## **Environment Variables (.env)**
+
+Example `.env` file:
+
+```
+MONGO_URI=mongodb://mongo:27017/simple_auth_db
+ME_CONFIG_MONGODB_SERVER=mongo
+ME_CONFIG_MONGODB_PORT=27017
+ME_CONFIG_BASICAUTH_USERNAME=admin
+ME_CONFIG_BASICAUTH_PASSWORD=admin
+```
+
+Make sure to create `.env` before running the containers.
+
+
+## **How to Run the Application**
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/dsaikiran01/docker-projects.git
+cd Project-2-Multi-Container-App-using-Docker-Compose
 ```
 
-### 2. Build and Start the Containers
+### 2. Start All Containers
 
 ```bash
-docker compose -f docker-compose.yml up -d
+docker compose up --build -d
 ```
 
 ### 3. Access the Application
 
-- **Frontend**: [http://localhost:8080](http://localhost:8080)
-- **Backend API**: [http://localhost:3000](http://localhost:3000)
-- **Mongo Express**: [http://localhost:8081](http://localhost:8081)
+| Service       | URL                                            |
+| ------------- | ---------------------------------------------- |
+| Frontend      | [http://localhost:8080](http://localhost:8080) |
+| Backend API   | [http://localhost:3000](http://localhost:3000) |
+| Mongo Express | [http://localhost:8081](http://localhost:8081) |
 
-### 4. Environment Variables
 
-The following environment variables are used in the application:
+## **API Endpoints (Backend)**
 
-- **Backend**:
-  - `MONGO_URI`: MongoDB connection string (default: `mongodb://mongo:27017/simple_auth_db`)
-- **Mongo Express**:
-  - `ME_CONFIG_MONGODB_SERVER`: MongoDB server name (default: `mongo`)
-  - `ME_CONFIG_MONGODB_PORT`: MongoDB port (default: `27017`)
-  - `ME_CONFIG_BASICAUTH_USERNAME`: Admin username (default: `admin`)
-  - `ME_CONFIG_BASICAUTH_PASSWORD`: Admin password (default: `admin`)
+| Method | Endpoint        | Description           |
+| ------ | --------------- | --------------------- |
+| POST   | `/api/register` | Register a new user   |
+| GET    | `/api/users`    | Get list of all users |
+| GET    | `/api/health`   | Checking backend service |
 
-### 5. API Endpoints
 
-- **Register User**: `POST /api/register`
-  - Request Body: `{ "username": "<username>", "password": "<password>" }`
-  - Response: `{ "message": "User saved", "userId": "<id>" }`
+**Example Request:**
 
-- **Get All Users**: `GET /api/users`
-  - Response: `[ { "username": "<username>", "password": "<password>" }, ... ]`
-
-### 6. Stopping the Containers
-
-```bash
-docker-compose down
+```json
+POST /api/register
+{
+  "username": "john",
+  "password": "1234"
+}
 ```
 
-### 7. Cleaning Up
 
-To remove all containers, networks, and volumes:
+## **Stopping and Cleaning**
+
+Stop all containers:
 
 ```bash
-docker compose -f docker-compose.yml down
+docker compose down
 ```
 
-## Notes
+Cleanup (containers, networks, volumes):
 
-- Ensure that the `docker-compose.yml` file is properly configured for your environment.
-- Mongo Express is accessible at `http://API_IP:8081/db` with the default credentials `admin/admin`.
+```bash
+docker compose down --volumes
+```
+
+
+## **Simulation Output**
+
+1. Created Docker Images after using Docker Compose
+
+![Docker Images Created](./assets/01-images-created.png)
+
+2. Backend service checkup
+
+![Backend Service Check](./assets/02-backend.png)
+
+3. Frontend
+
+![Frontend](./assets/03-frontend-creds-enter.png)
+
+![Users List](./assets/04-frontend-users.png)
+
+4. Database
+
+![Database Admin Login](./assets/05-database-login.png)
+
+![Database Admin UI](./assets/06-database.png)
+
+
+## **Conclusion**
+
+This project provided hands-on experience with **containerisation and orchestration using Docker Compose**, allowing multiple services to interact seamlessly as a real microservice-based application. By implementing environment variables, custom Dockerfiles, networking, and database integration, this project strengthened practical DevOps skills that are essential for deploying modern applications.
