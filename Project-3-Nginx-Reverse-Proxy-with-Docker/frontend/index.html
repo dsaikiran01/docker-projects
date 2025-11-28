@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nginx Reverse Proxy Demo</title>
+</head>
+<body>
+  <h1>Frontend served via Nginx</h1>
+  <button onclick="callApi()">Call Backend API</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function callApi() {
+      const res = await fetch('/api/hello');
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

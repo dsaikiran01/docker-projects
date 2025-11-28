@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Error</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 50px;
+    }
+    .container {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    .error-message {
+      font-size: 1.2em;
+      color: #555;
+    }
+    .error-code {
+      font-size: 2em;
+      font-weight: bold;
+      color: #d9534f;
+    }
+    .button {
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.1em;
+      margin-top: 20px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Oops! Something Went Wrong</h1>
+    
+    <div class="error-details">
+      <!-- 502 Error -->
+      <div class="error-message" id="error502" style="display: none;">
+        <p class="error-code">502 Bad Gateway</p>
+        <p>We are having trouble communicating with other servers. Please try again later.</p>
+      </div>
+
+      <!-- 503 Error -->
+      <div class="error-message" id="error503" style="display: none;">
+        <p class="error-code">503 Service Unavailable</p>
+        <p>We are currently undergoing maintenance. Please try again shortly.</p>
+      </div>
+
+      <!-- 504 Error -->
+      <div class="error-message" id="error504" style="display: none;">
+        <p class="error-code">504 Gateway Timeout</p>
+        <p>The request timed out while waiting for a response from the upstream server. Please try again later.</p>
+      </div>
+      
+      <!-- General Message for all errors -->
+      <p class="message">If the issue persists, please <a href="mailto:support@example.com">contact support</a>.</p>
+      <a class="button" href="/">Go back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to Display the Correct Error Based on HTTP Status Code
+    var errorCode = 503; // Set your error code here: 502, 503, or 504
+    
+    if (errorCode === 502) {
+      document.getElementById('error502').style.display = 'block';
+    } else if (errorCode === 503) {
+      document.getElementById('error503').style.display = 'block';
+    } else if (errorCode === 504) {
+      document.getElementById('error504').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
