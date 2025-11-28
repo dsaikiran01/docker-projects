@@ -3,6 +3,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-black?logo=github)
 ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker)
 ![Docker Compose](https://img.shields.io/badge/DockerCompose-lightblue?logo=docker)
+![Nginx](https://img.shields.io/badge/ReverseProxy-Nginx-darkgreen?logo=nginx)
 
 This repository contains a collection of hands-on **Docker projects** demonstrating practical implementations of containerisation, service orchestration and production-oriented workflows. Each project includes detailed documentation and source code.
 
@@ -39,18 +40,24 @@ All projects include:
 
 Containerise a simple Flask web application using Docker.
 
-[View Docs](./Project-1-Dockerising-Flask-App/README.md)
-
-[Source Code](./Project-1-Dockerising-Flask-App/app-code-files/)
+* [View Docs](./Project-1-Dockerising-Flask-App/README.md)
+* [Source Code](./Project-1-Dockerising-Flask-App/app-code-files/)
 
 
 ### Project-2: Containerising full stack application using Docker
 
 Containerise a full stack application into microservices using Docker .
 
-[View Docs](./Project-2-Multi-Container-App-using-Docker-Compose/README.md)
+* [View Docs](./Project-2-Multi-Container-App-using-Docker-Compose/README.md)
+* [Source Code](./Project-2-Multi-Container-App-using-Docker-Compose/)
 
-[Source Code](./Project-2-Multi-Container-App-using-Docker-Compose/)
+
+### Project-3: Nginx Reverse Proxy using Docker
+
+Handle frontend and backend routing using Nginx Docker container
+
+* [View Docs](./Project-3-Nginx-Reverse-Proxy-with-Docker/README.md)
+* [Source Code](./Project-3-Nginx-Reverse-Proxy-with-Docker/)
 
 
 ## Tools and Technologies
@@ -58,6 +65,7 @@ Containerise a full stack application into microservices using Docker .
 * **Containers:** Docker
 * **CI/CD:** GitHub Actions
 * **Version Control:** Git, GitHub
+* **Web Server:** Nginx
 
 
 ## How to Use This Repository

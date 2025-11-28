@@ -1,9 +1,9 @@
 # Project-2: Multi-Container Application using Docker Compose
 
 ![Docker](https://img.shields.io/badge/Container-Docker-blue?logo=docker)
-![Docker Compose](https://img.shields.io/badge/Orchestration-DockerCompose-blue?logo=docker)
+![Docker Compose](https://img.shields.io/badge/Orchestration-DockerCompose-lightblue?logo=docker)
 ![Node.js](https://img.shields.io/badge/Backend-Node.js-green?logo=node.js)
-![Express](https://img.shields.io/badge/Framework-Express-black?logo=express)
+![Express](https://img.shields.io/badge/Framework-Express-lightgreen?logo=express)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-green?logo=mongodb)
 ![Nginx](https://img.shields.io/badge/ReverseProxy-Nginx-darkgreen?logo=nginx)
 ![Mongo Express](https://img.shields.io/badge/DB_Admin-MongoExpress-orange)
