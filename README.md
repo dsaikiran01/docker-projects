@@ -59,6 +59,13 @@ Handle frontend and backend routing using Nginx Docker container
 * [View Docs](./Project-3-Nginx-Reverse-Proxy-with-Docker/README.md)
 * [Source Code](./Project-3-Nginx-Reverse-Proxy-with-Docker/)
 
+### Project-4: Jenkins CI Pipeline using Docker
+
+A complete CI pipeline using Jenkins running inside Docker.
+
+* [View Docs](./Project-4-Jenkins-CI-Pipeline-using-Docker/README.md)
+* [Source Code](./Project-4-Jenkins-CI-Pipeline-using-Docker/app-code-files/)
+
 
 ## Tools and Technologies
 

@@ -59,8 +59,8 @@ graph LR
 
     subgraph Docker_Network
         RP[Nginx Reverse Proxy]
-        FE[Frontend<br>HTML + Nginx]
-        BE[Backend API<br>Node.js/Express]
+        FE[Frontend<br>HTML + CSS + JS]
+        BE[Backend API<br>Node.js + Express]
     end
 
     U -->|HTTP :80| RP
