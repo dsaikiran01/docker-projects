@@ -1,0 +1,25 @@
+{
+  "name": "jenkins-in-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node app.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsaikiran01/Jenkins-in-Docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dsaikiran01/Jenkins-in-Docker/issues"
+  },
+  "homepage": "https://github.com/dsaikiran01/Jenkins-in-Docker#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
