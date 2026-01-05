@@ -1,0 +1,36 @@
+# ---------- Stage 1: Build ----------
+FROM python:3.11-slim AS builder
+
+WORKDIR /build
+
+# Install system dependencies needed to build wheels
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN pip install --upgrade pip \
+    && pip wheel --no-cache-dir --no-deps -r requirements.txt -w /wheels
+
+
+# ---------- Stage 2: Runtime ----------
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Install runtime dependencies only
+COPY --from=builder /wheels /wheels
+RUN pip install --no-cache /wheels/* \
+    && rm -rf /wheels
+
+COPY app.py .
+
+USER appuser
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
