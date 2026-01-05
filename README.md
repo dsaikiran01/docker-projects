@@ -20,7 +20,7 @@ This repository contains a collection of hands-on **Docker projects** demonstrat
 
 The goal of this repository is to document and showcase end-to-end DevOps implementations using Docker and cloud services.
 The projects in this repository are structured to simulate real-world DevOps scenarios. Each project contains its own `README.md`, source code, and documentation. They focus on core concepts such as:
-* Docker containerization
+* Docker containersation
 * Docker Compose orchestration
 * Multi-container architecture
 * Backend API development
@@ -59,12 +59,21 @@ Handle frontend and backend routing using Nginx Docker container
 * [View Docs](./Project-3-Nginx-Reverse-Proxy-with-Docker/README.md)
 * [Source Code](./Project-3-Nginx-Reverse-Proxy-with-Docker/)
 
+
 ### Project-4: Jenkins CI Pipeline using Docker
 
 A complete CI pipeline using Jenkins running inside Docker.
 
 * [View Docs](./Project-4-Jenkins-CI-Pipeline-using-Docker/README.md)
 * [Source Code](./Project-4-Jenkins-CI-Pipeline-using-Docker/app-code-files/)
+
+
+### Project-5: Docker Image Optimisation using Multi-Stage Builds
+
+Hands-on Docker project demonstrating multi-stage builds, image size reduction, and production-ready container design.
+
+* [View Docs](./Project-5-Docker-Image-Optimisation/README.md)
+* [Source Code](./Project-5-Docker-Image-Optimisation/app-code-files/)
 
 
 ## Tools and Technologies
