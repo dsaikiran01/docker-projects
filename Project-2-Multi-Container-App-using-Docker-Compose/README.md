@@ -182,7 +182,11 @@ docker compose down --volumes
 
 1. Created Docker Images after using Docker Compose
 
-![Docker Images Created](./assets/01-images-created.png)
+![Docker Images Created](./assets/01-1-images-created.png)
+
+*New optimised images created after adding multi-stage builds and security best practices*
+
+![New optimised images](./assets/01-2-optimised-images-created.png)
 
 2. Backend service checkup
 
